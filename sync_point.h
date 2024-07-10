@@ -1,5 +1,4 @@
-// Most code of this file is copied and modified from rocksdb SyncPoint.
-// And modified by Xiaoccer (github.com/Xiaoccer).
+// Modified from rocksdb SyncPoint by Xiaoccer (github.com/Xiaoccer).
 
 #pragma once
 
@@ -10,8 +9,6 @@
 #include <tuple>
 #include <type_traits>
 #include <vector>
-
-// #define UNIT_TEST
 
 #ifdef UNIT_TEST
 namespace utils {
@@ -87,8 +84,6 @@ class SyncPoint {
 // TEST_SYNC_POINT is no op in release build.
 #define TEST_SYNC_POINT(x) utils::SyncPoint::GetInstance()->Process(x)
 #define TEST_IDX_SYNC_POINT(x, index) utils::SyncPoint::GetInstance()->Process(x + std::to_string(index))
-// #define TEST_SYNC_POINT_CALLBACK(x, y)
-// utils::SyncPoint::GetInstance()->Process(x, y)
 #define TEST_SYNC_POINT_ARGS(x, ...) utils::SyncPoint::GetInstance()->Process(x, std::vector<void*>{__VA_ARGS__})
 #define TEST_SYNC_POINT_RETURN_VOID(x) \
   {                                    \
