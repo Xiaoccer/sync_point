@@ -53,7 +53,6 @@ class SyncPoint::Impl {
     cv_.notify_all();
   }
 
-  template <typename... Arg>
   void SetCallBack(const std::string& point, const std::function<void(const std::vector<void*>&)>& callback) {
     std::lock_guard lock(mutex_);
     callbacks_[point] = callback;
